@@ -8,27 +8,29 @@ import 'aos/dist/aos.css';
 const Footer = () => {
   useEffect(() => {
     AOS.init({
-      duration: 1000,
+      duration: 800,
       once: true,
-      offset: 50
+      offset: 0,
+      disable: 'mobile',
+      mirror: false
     });
   }, []);
 
   return (
-    <footer className="bg-gradient-to-t from-black to-gray-900 text-gray-200 px-5 relative z-50">
-      <div className="max-w-7xl mx-auto px-6">
+    <footer className="bg-gradient-to-t from-black to-gray-900 text-gray-200 relative z-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Main footer content */}
-        <div className="py-16">
-          <div className="grid md:grid-cols-3 gap-12">
+        <div className="py-12">
+          <div className="grid md:grid-cols-3 gap-8 md:gap-12">
             {/* First Column - Newsletter */}
-            <div className="space-y-6" data-aos="fade-right" data-aos-delay="0">
+            <div className="space-y-6 opacity-0" data-aos="fade-right" data-aos-delay="0">
               <div className="space-y-3">
                 <h2 className="text-2xl font-bold text-gray-200">Be Ready to Grow</h2>
-                <p className="text-gray-300" data-aos="fade-up" data-aos-delay="100">
+                <p className="text-gray-300">
                   Get Exclusive <span className="font-bold text-gray-200">Updates</span> straight to your inbox
                 </p>
               </div>
-              <div className="flex flex-col sm:flex-row gap-3" data-aos="fade-up" data-aos-delay="200">
+              <div className="flex flex-col sm:flex-row gap-3">
                 <input
                   type="email"
                   placeholder="Email"
@@ -41,13 +43,13 @@ const Footer = () => {
             </div>
 
             {/* Second Column - Quick Links */}
-            <div className="grid grid-cols-2 gap-8 md:gap-12" data-aos="fade-up" data-aos-delay="100">
+            <div className="grid grid-cols-2 gap-8 opacity-0" data-aos="fade-up" data-aos-delay="100">
               {/* Quick Links Section 1 */}
               <div className="space-y-4">
                 <h3 className="text-xl font-bold text-gray-200">Quick Links</h3>
                 <ul className="space-y-3">
-                  {['Home', 'About', 'Services', 'Login'].map((item, index) => (
-                    <li key={item} data-aos="fade-left" data-aos-delay={150 + index * 50}>
+                  {['Home', 'About', 'Services', 'Login'].map((item) => (
+                    <li key={item}>
                       <a href={`/${item.toLowerCase()}`} className="text-gray-300 hover:text-blue-400 transition-colors duration-200">
                         {item}
                       </a>
@@ -60,8 +62,8 @@ const Footer = () => {
               <div className="space-y-4">
                 <h3 className="text-xl font-bold text-gray-200">Resources</h3>
                 <ul className="space-y-3">
-                  {['Blog', 'Support', 'Contact', 'FAQ'].map((item, index) => (
-                    <li key={item} data-aos="fade-left" data-aos-delay={200 + index * 50}>
+                  {['Blog', 'Support', 'Contact', 'FAQ'].map((item) => (
+                    <li key={item}>
                       <a href={`/${item.toLowerCase()}`} className="text-gray-300 hover:text-blue-400 transition-colors duration-200">
                         {item}
                       </a>
@@ -72,20 +74,15 @@ const Footer = () => {
             </div>
 
             {/* Third Column - Contact */}
-            <div className="space-y-6" data-aos="fade-left" data-aos-delay="200">
+            <div className="space-y-6 opacity-0" data-aos="fade-left" data-aos-delay="200">
               <h3 className="text-xl font-bold text-gray-200">Contact Us</h3>
               <div className="space-y-4">
                 {[
                   { Icon: HiLocationMarker, text: "IIIT Sri City, Andhra Pradesh" },
                   { Icon: MdMessage, text: "shyammodi1729@gmail.com" },
                   { Icon: MdCall, text: "+91 7780462541" }
-                ].map(({ Icon, text }, index) => (
-                  <div 
-                    key={text}
-                    className="flex items-start gap-3"
-                    data-aos="fade-up"
-                    data-aos-delay={250 + index * 50}
-                  >
+                ].map(({ Icon, text }) => (
+                  <div key={text} className="flex items-start gap-3">
                     <Icon className="h-6 w-6 text-blue-400 mt-1 flex-shrink-0" />
                     <p className="text-gray-300">{text}</p>
                   </div>
@@ -96,27 +93,21 @@ const Footer = () => {
         </div>
 
         {/* Copyright and Social Links section */}
-        <div className="py-8 border-t border-gray-700">
-          <div className="flex flex-col items-center space-y-6">
+        <div className="py-6 border-t border-gray-700">
+          <div className="flex flex-col items-center gap-4">
             {/* Social Links */}
-            <div 
-              className="flex items-center justify-center gap-6"
-              data-aos="fade-up"
-              data-aos-delay="300"
-            >
+            <div className="flex items-center justify-center gap-6 opacity-0" data-aos="fade-up" data-aos-delay="300">
               {[
                 { Icon: FaGithub, href: "https://github.com/shyxmz" },
                 { Icon: FaLinkedin, href: "https://www.linkedin.com/in/shyam-modi-1729zyu/" },
                 { Icon: FaInstagram, href: "https://www.instagram.com/shyxm.zz/" }
-              ].map(({ Icon, href }, index) => (
-                <a 
+              ].map(({ Icon, href }) => (
+                <a
                   key={href}
                   href={href}
                   className="text-gray-400 hover:text-white transition-colors duration-200"
                   target="_blank"
                   rel="noopener noreferrer"
-                  data-aos="zoom-in"
-                  data-aos-delay={350 + index * 50}
                 >
                   <Icon className="w-6 h-6" />
                 </a>
@@ -124,11 +115,7 @@ const Footer = () => {
             </div>
 
             {/* Privacy and Terms */}
-            <div 
-              className="flex items-center justify-center space-x-4 text-sm"
-              data-aos="fade-up"
-              data-aos-delay="400"
-            >
+            <div className="flex items-center justify-center space-x-4 text-sm opacity-0" data-aos="fade-up" data-aos-delay="400">
               <a href="/privacy" className="text-gray-400 hover:text-white transition-colors duration-200">
                 Privacy Policy
               </a>
@@ -139,11 +126,7 @@ const Footer = () => {
             </div>
 
             {/* Copyright */}
-            <div 
-              className="text-sm text-gray-400"
-              data-aos="fade-up"
-              data-aos-delay="450"
-            >
+            <div className="text-sm text-gray-400 opacity-0 pb-2" data-aos="fade-up" data-aos-delay="450">
               Copyright &copy; {new Date().getFullYear()} by DeSpace. All rights reserved.
             </div>
           </div>
